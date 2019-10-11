@@ -21,7 +21,7 @@ public class EchelonLayoutManager extends RecyclerView.LayoutManager {
     private int mItemViewHeight;
     private int mItemCount;
     private int mScrollOffset = Integer.MAX_VALUE;
-    private float mScale = 0.9f;
+    private float mScale = 0.95f;
 
     public EchelonLayoutManager(Context context) {
         this.mContext = context;
@@ -73,7 +73,6 @@ public class EchelonLayoutManager extends RecyclerView.LayoutManager {
 
         ArrayList<ItemViewInfo> layoutInfos = new ArrayList<>();
         for (int i = bottomItemPosition - 1, j = 1; i >= 0; i--, j++) {
-            //控制同时显示数量
             double maxOffset = ((getVerticalSpace() - mItemViewHeight) / 2 * Math.pow(0.8, j))/1.3;
             int start = (int) (remainSpace - offsetPercentRelativeToItemView * maxOffset);
             float scaleXY = (float) (Math.pow(mScale, j - 1) * (1 - offsetPercentRelativeToItemView * (1 - mScale)));
